@@ -2,11 +2,18 @@ package br.com.caelum.tarefas.modelo;
 
 import java.util.Calendar;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Tarefa {
 	private Long id;
+	@NotNull @Size(min=5, message="minimo de 5 caracteres")
 	private String descricao;
 	private boolean finalizado;
-	private Calendar dataFinalizacao;
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	private Calendar dataFinalizado;
 
 	public Long getId() {
 		return id;
@@ -32,12 +39,12 @@ public class Tarefa {
 		this.finalizado = finalizado;
 	}
 
-	public Calendar getDataFinalizacao() {
-		return dataFinalizacao;
+	public Calendar getDataFinalizado() {
+		return dataFinalizado;
 	}
 
-	public void setDataFinalizacao(Calendar dataFinalizacao) {
-		this.dataFinalizacao = dataFinalizacao;
+	public void setDataFinalizado(Calendar dataFinalizacao) {
+		this.dataFinalizado = dataFinalizacao;
 	}
 
 }
